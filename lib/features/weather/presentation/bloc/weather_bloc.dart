@@ -13,17 +13,32 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     required this.fetchWeatherJsonUsecase,
     required this.fetchWeatherXMLUsecase,
   }) : super(WeatherInitial()) {
-    on<WeatherLoadedEvent>(_loadedWeatherJson);
+    on<WeatherJsonLoadedEvent>(_loadedWeatherJson);
+    on<WeatherXmlLoadedEvent>(_loadedWeatherXml);
   }
 
   Future<void> _loadedWeatherJson(
-    WeatherLoadedEvent event,
+    WeatherJsonLoadedEvent event,
     Emitter<WeatherState> emit,
   ) async {
     emit(WeatherLoading());
 
     try {
-      final getWeather = await fetchWeatherJsonUsecase.call();
+      final getWeather = await fetchWeatherJsonUsecase.call(event.cityName);
+      emit(WeatherLoaded(getWeather));
+    } catch (e) {
+      emit(WeatherError(e.toString()));
+    }
+  }
+
+  Future<void> _loadedWeatherXml(
+    WeatherXmlLoadedEvent event,
+    Emitter<WeatherState> emit,
+  ) async {
+    emit(WeatherLoading());
+
+    try {
+      final getWeather = await fetchWeatherXMLUsecase.call(event.cityName);
       emit(WeatherLoaded(getWeather));
     } catch (e) {
       emit(WeatherError(e.toString()));

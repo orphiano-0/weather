@@ -1,5 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:weather_app/features/weather/presentation/bloc/weather_bloc.dart';
 
 import '../features/weather/data/datasource/weather_data_source.dart';
 import '../features/weather/domain/usecases/fetch_weather_json.dart';
@@ -11,6 +12,12 @@ Future<void> initDependencies() async {
   await dotenv.load();
 
   // Bloc
+  sl.registerFactory(
+    () => WeatherBloc(
+      fetchWeatherJsonUsecase: sl(),
+      fetchWeatherXMLUsecase: sl(),
+    ),
+  );
 
   // Data
   sl.registerLazySingleton(() => WeatherDataSource(sl()));

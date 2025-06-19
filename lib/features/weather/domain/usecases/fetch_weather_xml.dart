@@ -6,7 +6,7 @@ class FetchWeatherXMLUsecase {
 
   FetchWeatherXMLUsecase(this.weatherRepositories);
 
-  Future<WeatherEntity> call() async {
-    return await weatherRepositories.fetchWeatherXML();
+  Future<WeatherEntity> call(String cityName) async {
+    return await weatherRepositories.fetchWeatherXml(cityName);
   }
 }

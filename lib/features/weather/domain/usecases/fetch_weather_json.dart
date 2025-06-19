@@ -6,7 +6,7 @@ class FetchWeatherJsonUsecase {
 
   FetchWeatherJsonUsecase(this.weatherRepositories);
 
-  Future<WeatherEntity> call() async {
-    return await weatherRepositories.fetchWeatherJson();
+  Future<WeatherEntity> call(String cityName) async {
+    return await weatherRepositories.fetchWeatherJson(cityName);
   }
 }
