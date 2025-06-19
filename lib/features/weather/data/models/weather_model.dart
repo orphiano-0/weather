@@ -12,12 +12,17 @@ class WeatherModel extends WeatherEntity {
     required super.temperature,
     required super.humidity,
     required super.clouds,
-    required super.feelsLike,
   });
 
-  factory WeatherModel.fromJson(Map<String, dynamic> json) {
-    return _$WeatherModelFromJson(json);
+  factory WeatherModel.fromjson(Map<String, dynamic> json) {
+    return WeatherModel(
+      cityName: json['name'] as String,
+      weather: json['weather'][0]['main'] as String,
+      weatherDescription: json['weather'][0]['description'] as String,
+      temperature: (json['main']['temp'] as num).toDouble(),
+      humidity: json['main']['humidity'] as int,
+      clouds: json['clouds']['all'] as int,
+    );
   }
-
   Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
 }

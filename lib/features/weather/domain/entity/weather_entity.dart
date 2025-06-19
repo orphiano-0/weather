@@ -3,9 +3,8 @@ class WeatherEntity {
   final String weather;
   final String weatherDescription;
   final double temperature;
-  final double humidity;
-  final double clouds;
-  final String feelsLike;
+  final int humidity;
+  final int clouds;
 
   WeatherEntity({
     required this.cityName,
@@ -14,6 +13,5 @@ class WeatherEntity {
     required this.temperature,
     required this.humidity,
     required this.clouds,
-    required this.feelsLike,
   });
 }
