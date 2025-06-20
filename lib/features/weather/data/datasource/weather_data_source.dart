@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:xml/xml.dart';
 
 import '../../../../core/exceptions/exceptions.dart';
 import '../models/weather_model.dart';
@@ -35,13 +36,15 @@ class WeatherDataSource {
         'q': cityName,
         'appid': dotenv.env['OPENWEATHER_API_KEY'],
         'mode': 'xml',
-        'unit': 'metric',
+        'units': 'metric',
       },
     );
 
     switch (response.statusCode) {
       case 200:
-        return WeatherModel.fromXml(response.data);
+        final xmlDocument = XmlDocument.parse(response.data);
+        return WeatherModel.fromXml(xmlDocument.rootElement);
+
       default:
         throw FailedToFetchData();
     }
