@@ -118,4 +118,4 @@ OPENWEATHER_API_KEY=your_api_key_here
 ## 🛠️ Author
 
 **Gabriel J. Orphiano**
-[LinkedIn](https://www.linkedin.com/gaborphiano) | [GitHub](https://github.com/orphiano-0)
+[LinkedIn](https://www.linkedin.com/in/gaborphiano/) | [GitHub](https://github.com/orphiano-0)
