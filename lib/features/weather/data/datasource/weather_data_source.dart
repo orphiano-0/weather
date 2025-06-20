@@ -29,6 +29,21 @@ class WeatherDataSource {
   }
 
   Future<WeatherModel> fetchWeatherXml(String cityName) async {
-    throw FailedToFetchData();
+    final response = await dio.get(
+      '/weather',
+      queryParameters: {
+        'q': cityName,
+        'appid': dotenv.env['OPENWEATHER_API_KEY'],
+        'mode': 'xml',
+        'unit': 'metric',
+      },
+    );
+
+    switch (response.statusCode) {
+      case 200:
+        return WeatherModel.fromXml(response.data);
+      default:
+        throw FailedToFetchData();
+    }
   }
 }

@@ -40,6 +40,7 @@ class _WeatherPageJsonState extends State<WeatherPageJson> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
+        title: Text('From JSON', style: kTitleText),
         backgroundColor: Colors.transparent,
         leading: Builder(
           builder: (context) => IconButton(
