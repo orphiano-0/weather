@@ -1,5 +1,9 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
+import 'package:weather_app/core/network/dio_client.dart';
+import 'package:weather_app/features/weather/data/repositories/weather_repositories_impl.dart';
+import 'package:weather_app/features/weather/domain/repositories/weather_repositories.dart';
 import 'package:weather_app/features/weather/presentation/bloc/weather_bloc.dart';
 
 import '../features/weather/data/datasource/weather_data_source.dart';
@@ -27,4 +31,10 @@ Future<void> initDependencies() async {
   sl.registerLazySingleton(() => FetchWeatherXMLUsecase(sl()));
 
   // Repositories
+  sl.registerLazySingleton<WeatherRepositories>(
+    () => WeatherRepositoriesImpl(sl()),
+  );
+
+  // Client
+  sl.registerLazySingleton<Dio>(() => DioClient.configure());
 }

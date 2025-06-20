@@ -21,17 +21,7 @@ class WeatherDataSource {
 
     switch (response.statusCode) {
       case 200:
-        final weatherData = response.data;
-
-        final weatherModel = WeatherModel(
-          cityName: weatherData['name'],
-          weather: weatherData['weather'][0]['main'],
-          weatherDescription: weatherData['weather'][0]['description'],
-          temperature: (weatherData['main']['temp'] as num).toDouble(),
-          humidity: weatherData['main']['humidity'],
-          clouds: weatherData['clouds']['all'],
-        );
-        return weatherModel;
+        return WeatherModel.fromjson(response.data);
 
       default:
         throw FailedToFetchData();
