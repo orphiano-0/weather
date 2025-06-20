@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_app/features/weather/presentation/screens/weather_page.dart';
 
+import 'config/routes/app_router.dart';
 import 'core/container_injection.dart';
 import 'features/weather/presentation/bloc/weather_bloc.dart';
 
@@ -20,6 +20,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: WeatherPage());
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
+    );
   }
 }

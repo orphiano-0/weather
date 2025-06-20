@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather_app/core/constants/constants.dart';
-import 'package:weather_app/features/weather/domain/entity/weather_entity.dart';
+
+import '../../../../core/constants/constants.dart';
+import '../../../../core/widgets/weather_icon_mapper.dart';
+import '../../domain/entity/weather_entity.dart';
 
 class WeatherCard extends StatelessWidget {
   final WeatherEntity weather;
@@ -9,6 +11,7 @@ class WeatherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final iconPath = getWeatherIcon(weather.weather);
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(),
@@ -17,7 +20,7 @@ class WeatherCard extends StatelessWidget {
         children: [
           Text(weather.cityName, style: kTitleText),
           const SizedBox(height: 10),
-          Image.asset('assets/images/windy.png', height: 150),
+          Image.asset(iconPath, height: 150),
           const SizedBox(height: 15),
           Text(weather.weather, style: kWeatherText),
           const SizedBox(height: 20),

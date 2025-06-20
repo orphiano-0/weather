@@ -5,6 +5,8 @@ const ColorFilter kIconColor = ColorFilter.mode(
   BlendMode.srcIn,
 );
 
+const ColorFilter kNavColor = ColorFilter.mode(Colors.black, BlendMode.srcIn);
+
 const TextStyle kDefaultText = TextStyle(
   fontSize: 13,
   fontFamily: 'Montserrat',
