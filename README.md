@@ -13,8 +13,7 @@ The project follows a **feature-first clean architecture**:
 lib/
 ├── config/ # App-wide configurations (e.g., routes)
 ├── core/ # Shared utilities and exceptions
-├── features/
-│ └── weather/
+├── features/weather/
 │ ├── data/
 │ │ ├── datasource/
 │ │ ├── models/
@@ -115,7 +114,7 @@ OPENWEATHER_API_KEY=your_api_key_here
 
 ---
 
-## 🛠️ Author
+## 🛠️ APK
 
-**Gabriel J. Orphiano**
-[LinkedIn](https://www.linkedin.com/in/gaborphiano/) | [GitHub](https://github.com/orphiano-0)
+**Download the app here:**
+[Weather App](https://drive.google.com/drive/folders/1o3-IKcYyATYBD0VmRg4cob638qdq5MKJ?usp=sharing) |
